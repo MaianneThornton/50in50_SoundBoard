@@ -19,13 +19,13 @@ This is a code along project in the [50 Projects In 50 Days - HTML, CSS & JavaSc
 
 ## Overview👋🏾
 
-Welcome to the # mini-project of the course!
+Welcome to the 9<sup>th</sup> mini-project of the course!
 
 ### The project😥
 
 In this project users will be able to:
 
-- Build a responsive site that displays a functional progress bar.
+- Build a site that plays various sounds.
 
 ### Screenshot🌇
 
@@ -33,12 +33,12 @@ In this project users will be able to:
 
 ### Links👩🏾‍💻
 
-- Solution URL: (https://github.com/MaianneThornton/50in50_ProgressSteps)
-- Live Site URL: (https://frolicking-biscotti-f94d2f.netlify.app/)
+- Solution URL: (https://github.com/MaianneThornton/50in50_SoundBoard)
+- Live Site URL: (https://marvelous-sundae-462332.netlify.app)
 
 ## My process💭
 
-This is a simple project that I started by marking out initial classes and id's in the html file to be later used for styling. Next I began styling the css by styling the line, circles, and buttons. I then added functionality by way of JavaScript to switch between classes when the user clicks on a button.
+This is a simple project that I started by marking out initial id's in the html file. Next I began building the buttons by way of JavaScript. I then styled the site, and buttons. Lastly I added functionality by way of JavaScript to play the desired sound with the click of a button.
 
 ### Built with👷🏾‍♀️
 
@@ -49,9 +49,9 @@ This is a simple project that I started by marking out initial classes and id's 
 
 ### What I learned👩🏾‍🏫
 
-I learned the logic behind making a simple progress bar functional. I will be applying this to future projects where needed.
+I learned that HTML5 comes with access to a Web Audio API that complements the audio media element. By accessing the elements of the API I can easily manipulate the sounds.
 
-I also learned that when using the before or after selectors you MUST add content for the style to be visible.
+I learned the logic behind accessing the Web Audio API to add play and pause functionality.
 
 ### Continued development🔮
 
@@ -59,47 +59,40 @@ In the future I plan on continuing to practice positioning elements using flexbo
 
 I also plan on continuing to practice using event listeners to make my pages more functional.
 
-I also plan on continuing to learn the best ways to phrase git commits, so that future viewers can fully understand the changes that have occurred.
+I plan on continuing my studies on the Web Audio API and strengthening my skills in utilizing the API's elements.
 
 ### I'm really proud of these code snippets✂️
 
-```css
-.progress-container::before {
-  content: '';
-  background-color: var(--line-border-empty);
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  height: 4px;
-  width: 100%;
-  z-index: -1;
-}
-```
-
 ```js
-next.addEventListener('click', () => {
-  currentActive++;
+sounds.forEach((sound) => {
+  const btn = document.createElement('button');
+  btn.classList.add('btn');
 
-  if (currentActive > circles.length) {
-    currentActive = circles.length;
-  }
-  update();
+  btn.innerText = sound;
+
+  btn.addEventListener('click', () => {
+    stopSongs();
+    document.getElementById(sound).play();
+  });
+
+  document.getElementById('buttons').appendChild(btn);
 });
 
-prev.addEventListener('click', () => {
-  currentActive--;
+function stopSongs() {
+  sounds.forEach((sound) => {
+    const song = document.getElementById(sound);
 
-  if (currentActive < 1) {
-    currentActive = 1;
-  }
-  update();
-});
+    song.pause();
+
+    song.currentTime = 0;
+  });
+}
 ```
 
 ### Useful resources📖
 
-- [Resource](https://www.freecodecamp.org/news/how-to-write-better-git-commit-messages/) - This is an amazing article which helped me write better commit messages. I'd recommend it to anyone still learning this concept.
+- [Resource 1](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio) - This article which helped me to understand the embed audio element.
+- [Resource 2](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API) - This is an amazing article which helped me to dive deeper into the Web Audio API element's and how to access and utilize each one.
 
 ## Author🔎
 
